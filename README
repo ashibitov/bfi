@@ -1,1 +1,6 @@
 Brainfuck interpreter written in C++.
+
+0.1 - May 11 2015
+    Basic interpreter. Some loops don't work, for some reason. Will look into it further at some point. As of right now,
+    many basic programs work on it. Input output is functional. Debug mode added and fully functional. May beautify it
+    at some point.
