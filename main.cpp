@@ -111,18 +111,12 @@ int main(int argc, char* argv[]){
 				tapePosition++;
 				break;
 			case '<':
-				if(tapePosition == 0){
-					break;
-				}
 				tapePosition--;
 				break;
 			case '+':
 				tape[tapePosition]++;
 				break;
 			case '-':
-				if((int)tape[tapePosition] == 0){
-					break;
-				}
 				tape[tapePosition]--;
 				break;
 			case '.':
