@@ -90,18 +90,14 @@ int main(int argc, char* argv[]){
 			fullbuffer = fullbuffer + filebuffer;
 	}
 	fullbuffer.erase(std::remove(fullbuffer.begin(), fullbuffer.end(), ' '), fullbuffer.end());
-
 	std::string finalbuffer;
 	for(int i = 0; i < fullbuffer.length(); i++){
 		if(checkChar(fullbuffer[i]) == SUCCESS){
 			finalbuffer = finalbuffer + fullbuffer[i];
 		}
 	}
-	//File has been formatted now. Interpretation can begin.
-	
 	char * tape = new char[CELLSIZE];
 	int tapePosition = 0;
-
 	for(int i = 0; i < finalbuffer.length(); i++){
 		if(debug == TRUE){
 			std::cout << "\n\nON INSTRUCTION " << i << " = " << finalbuffer[i] << "\n";
@@ -137,10 +133,8 @@ int main(int argc, char* argv[]){
 				break;
 			case '[':
 				if(((int)tape[tapePosition]) == 0){
-					//skip to next matching brace
 					int current = i;
 					bool match = TRUE;
-
 					for(int x = i; x < finalbuffer.length(); x++){
 						if(finalbuffer[x] == '['){
 							match = FALSE;
@@ -162,10 +156,8 @@ int main(int argc, char* argv[]){
 				break;
 			case ']':
 				if(((int)tape[tapePosition]) != 0){
-					//skip to prev matching brace
 					int current = i;
 					bool match = TRUE;
-
 					for(int x = i-1; x > 0; x--){
 						if(finalbuffer[x] == ']'){
 							match = FALSE;
@@ -185,15 +177,9 @@ int main(int argc, char* argv[]){
 					}
 				}
 				break;
-
 			default:
 				break;
 		}
 	}
-
-
-
-
-
 	delete tape;
 }
