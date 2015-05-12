@@ -129,7 +129,19 @@ int main(int argc, char* argv[]){
 				if(((int)tape[tapePosition]) == 0){
 					int current = i;
 					bool match = TRUE;
-					for(int x = i; x < finalbuffer.length(); x++){
+					int loopCount = 1;
+					for(int x = i+1; x < finalbuffer.length(); x++){
+						if(finalbuffer[x] == '['){
+							loopCount++;
+						}
+						if(finalbuffer[x] == ']'){
+							loopCount--;
+						}
+						if(loopCount == 0){
+							i = x;
+							break;
+						}
+						/*
 						if(finalbuffer[x] == '['){
 							match = FALSE;
 						}
@@ -144,7 +156,7 @@ int main(int argc, char* argv[]){
 							if(debug == TRUE)
 								std::cout << "this is the matching ] brace: " << x << "\n";
 							break;
-						}
+						}*/
 					}
 				}
 				break;
@@ -152,7 +164,19 @@ int main(int argc, char* argv[]){
 				if(((int)tape[tapePosition]) != 0){
 					int current = i;
 					bool match = TRUE;
+					int loopCount = 1;
 					for(int x = i-1; x > 0; x--){
+						if(finalbuffer[x] == ']'){
+							loopCount++;
+						}
+						if(finalbuffer[x] == '['){
+							loopCount--;
+						}
+						if(loopCount == 0){
+							i = x;
+							break;
+						}
+						/*
 						if(finalbuffer[x] == ']'){
 							match = FALSE;
 						}
@@ -167,7 +191,7 @@ int main(int argc, char* argv[]){
 							if(debug == TRUE)
 								std::cout << "this is the matching [ brace: " << x << "\n";
 							break;
-						}
+						}*/
 					}
 				}
 				break;
