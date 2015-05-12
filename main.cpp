@@ -141,22 +141,6 @@ int main(int argc, char* argv[]){
 							i = x;
 							break;
 						}
-						/*
-						if(finalbuffer[x] == '['){
-							match = FALSE;
-						}
-						if(finalbuffer[x] == ']' && match == FALSE){
-							if(debug == TRUE)
-								std::cout << "this is another ] brace: " << x << "\n";
-							match = TRUE;
-							continue;
-						}
-						if(finalbuffer[x] == ']' && match == TRUE){
-							i = x;
-							if(debug == TRUE)
-								std::cout << "this is the matching ] brace: " << x << "\n";
-							break;
-						}*/
 					}
 				}
 				break;
@@ -176,22 +160,6 @@ int main(int argc, char* argv[]){
 							i = x;
 							break;
 						}
-						/*
-						if(finalbuffer[x] == ']'){
-							match = FALSE;
-						}
-						if(finalbuffer[x] == '[' && match == FALSE){
-							if(debug == TRUE)
-								std::cout << "this is another [ brace: " << x << "\n";
-							match = TRUE;
-							continue;
-						}
-						if(finalbuffer[x] == '[' && match == TRUE){
-							i = x;
-							if(debug == TRUE)
-								std::cout << "this is the matching [ brace: " << x << "\n";
-							break;
-						}*/
 					}
 				}
 				break;
