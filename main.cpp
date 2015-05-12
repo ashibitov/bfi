@@ -127,8 +127,6 @@ int main(int argc, char* argv[]){
 				break;
 			case '[':
 				if(((int)tape[tapePosition]) == 0){
-					int current = i;
-					bool match = TRUE;
 					int loopCount = 1;
 					for(int x = i+1; x < finalbuffer.length(); x++){
 						if(finalbuffer[x] == '['){
@@ -146,8 +144,6 @@ int main(int argc, char* argv[]){
 				break;
 			case ']':
 				if(((int)tape[tapePosition]) != 0){
-					int current = i;
-					bool match = TRUE;
 					int loopCount = 1;
 					for(int x = i-1; x > 0; x--){
 						if(finalbuffer[x] == ']'){
