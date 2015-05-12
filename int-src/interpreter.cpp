@@ -22,9 +22,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
-#include "COMPILE.h"
-
+#include <string> 
 #define SUCCESS 0
 #define FAILURE 1
 
@@ -34,9 +32,10 @@
 #define CELLSIZE 30000
 
 void usage(){
-	std::cout << "usage: bfi inputfile.bf (-d) (0-29,999)" << std::endl;
+	std::cout << "usage: bfi inputfile.bf (-d) (0-29,999) (-s)" << std::endl;
 	std::cout << "\t-d : show debug information\n";
-	std::cout << "\t(0-29,999) : # of cells to display\n\n";
+	std::cout << "\t(0-29,999) : # of cells to display\n";
+	std::cout << "\t-s : step through debug mode\n";
 	return;
 }
 
@@ -69,14 +68,24 @@ int main(int argc, char* argv[]){
 		return 0;
 	}
 	bool debug = FALSE;
+	bool STEP = FALSE;
 	int CELL_PRINT = 5;
-	if(argc == 3 || argc == 4){
-		if(strcmp(argv[2], "d")){
+	if(argc >= 3){
+		std::string agv(argv[2]);
+		if(agv == "-d"){
 			std::cout << "debug flag active . . .\n";
+			system("read");
 			debug = TRUE;
-		}
-		if(argc == 4){
-			CELL_PRINT = atoi(argv[3]);
+			if(argc >= 4 && argc){
+				CELL_PRINT = atoi(argv[3]);
+			}
+			std::string agv2 = " ";
+			if(argc >= 5){
+				agv2 = argv[4];
+			}
+			if(agv2 == "-s"){
+				STEP = TRUE;
+			}
 		}
 	}
 	std::ifstream inputBF;
@@ -101,6 +110,9 @@ int main(int argc, char* argv[]){
 	int tapePosition = 0;
 	for(int i = 0; i < finalbuffer.length(); i++){
 		if(debug == TRUE){
+			if(STEP == TRUE){
+				system("read");
+			}
 			std::cout << "\n\nON INSTRUCTION " << i << " = " << finalbuffer[i] << "\n";
 			for(int j = 0; j < CELL_PRINT; j++){
 				std::cout << j << "cell = " << (int)tape[j] << std::endl;
